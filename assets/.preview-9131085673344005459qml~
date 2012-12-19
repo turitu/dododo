@@ -1,0 +1,17 @@
+import bb.cascades 1.0
+
+Page {
+    titleBar: TitleBar {
+        title: "Inbox"
+    }
+    Container {
+        ListView {
+            dataModel: XmlDataModel {
+                source: "models/inboxmodel.xml"               
+            }
+            listItemComponents: [
+                ListItem
+            ]
+        }
+    }
+}
