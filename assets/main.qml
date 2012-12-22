@@ -2,72 +2,182 @@
 import bb.cascades 1.0
 
 // creates one page with a label
-Page {
-    ScrollView {
-        Container {
-            ListsComponent {
-                itemName: "Inbox"
-                nbrItems: "7"
+NavigationPane {
+    Page {
+        titleBar: TitleBar {
+            title: "Lists"
+        }
+        
+        actions: [
+            ActionItem {
+                title: "New Todo"
+                ActionBar.placement: ActionBarPlacement.OnBar
+                onTriggered: {
+                    todosheet.open()
+                }
+            },
+            ActionItem {
+                title: "Navigate"
+                ActionBar.placement: ActionBarPlacement.OnBar
+            },
+            ActionItem {
+                title: "Another Action"
             }
-            ListsComponent {
-                itemName: "Today"
-                nbrItems: "5"
-            }
-            ListsComponent {
-                itemName: "Next"
-                nbrItems: "22"
-            }
-            ListsComponent {
-                itemName: "Scheduled"
-                nbrItems: "13"
-            }            
-            ListsComponent {
-                itemName: "Someday"
-                nbrItems: "38"
-            }            
-            ListsComponent {
-                itemName: "Projects"
-                nbrItems: "9"
-            }            
-            ListsComponent {
-                itemName: "Logbook"
-                nbrItems: "40"
-            }            
-            ListsComponent {
-                itemName: "Trash"
-                nbrItems: "20"
-            }  
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
-            ListsComponent {}
+        ]
+        
+        ScrollView {
+            Container {
+                Container {
+                    topPadding: 2.0
+                    Divider {
+                    }
+                }
+                Container {
+                    id: inboxContainer
+//                    background: Color.DarkRed
+                    topPadding: 20.0
+                    bottomPadding: 20.0
+                    ListsComponent {
+                        itemName: "Inbox"
+                        nbrItems: "7"
+                    }
+                }
+                Divider {}
+                Container {
+                    id: listsContainer
+//                    background: Color.LightGray
+                    topPadding: 20.0
+                    bottomPadding: 20.0
+                    ListsComponent {
+                        id: today
+                        itemName: "Today"
+                        nbrItems: "5"
+                    }
+                    ListsComponent {
+                        id: next
+                        itemName: "Next"
+                        nbrItems: "22"
+                    }
+                    ListsComponent {
+                        id: scheduled
+                        itemName: "Scheduled"
+                        nbrItems: "13"
+                    }
+                    ListsComponent {
+                        id: someday
+                        itemName: "Someday"
+                        nbrItems: "38"
+                    }
+                }
+                Divider {}
+                Container {
+                    id: projectsContainer
+//                    background: Color.DarkCyan
+                    topPadding: 20.0
+                    bottomPadding: 20.0
+                    ListsComponent {
+                        id: projects
+                        itemName: "Projects"
+                        nbrItems: "9"
+                    }
+                }
+                Divider {
+                }
+                Container {
+                    id: responsibilitiesContainer
+//                    background: Color.White
+                    topPadding: 20.0
+                    bottomPadding: 20.0
+                    ListsComponent {
+                        itemName: "A responsibility"
+                        nbrItems: ""
+                    }
+                    ListsComponent {
+                        itemName: "Hoppsan"
+                        nbrItems: ""
+                    }
+                    ListsComponent {
+                        itemName: "My last responsibility"
+                        nbrItems: ""
+                    }
+                }
+                Divider {
+                }
+                Container {
+                    id: logbookContainer
+//                    background: Color.DarkGray
+                    topPadding: 20.0
+                    bottomPadding: 20.0
+                    ListsComponent {
+                        itemName: "Logbook"
+                        nbrItems: "40"
+                    }
+                }
+                Divider {
+                }
+                Container {
+                    id: otherstuffContainer
+//                    background: Color.DarkGreen
+                    topPadding: 20.0
+//                    bottomPadding: 20.0
+                    ListsComponent {
+                        itemName: "Trash"
+                        nbrItems: "20"
+                    }
+                    ListsComponent {
+                    }
+                    ListsComponent {
+                        nbrItems: ""
+                    }
+                    ListsComponent {
+                    }
+                    ListsComponent {
+                    }
+                    ListsComponent {
+                    }
+
+                    ListsComponent {
+                    }
+                    ListsComponent {
+                        nbrItems: ""
+                    }
+                    ListsComponent {
+                    }
+                    ListsComponent {
+                        itemName: "Hejsan"
+                    }
+                    ListsComponent {
+                        nbrItems: ""
+                    }
+                    ListsComponent {
+                        nbrItems: ""
+                    }
+                }           
+
             
+            }
+        
         }
-      
+        
+        /*    
+         Container {
+         layout: DockLayout {}
+         //layout: StackLayout {}
+         ListsComponent{}
+         Label {
+         text: qsTr("Hello World")
+         textStyle.base: SystemDefaults.TextStyles.BigText
+         verticalAlignment: VerticalAlignment.Center
+         horizontalAlignment: HorizontalAlignment.Center
+         }
+         }
+         */
     }
-    
-/*    
-    Container {
-        layout: DockLayout {}
-        //layout: StackLayout {}
-        ListsComponent{}
-        Label {
-            text: qsTr("Hello World")
-            textStyle.base: SystemDefaults.TextStyles.BigText
-            verticalAlignment: VerticalAlignment.Center
-            horizontalAlignment: HorizontalAlignment.Center
+    attachedObjects: [
+        Sheet {
+            id: todosheet
+            NewTodo{}
         }
-    }
-*/
+    ]
 }
 

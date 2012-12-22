@@ -16,10 +16,14 @@ Container {
         layoutProperties: StackLayoutProperties {
             spaceQuota: 2.0
         }
+        verticalAlignment: VerticalAlignment.Bottom
     }
     Label {
         id: name
         text: "Tjo"
+        textStyle {
+            base: SystemDefaults.TextStyles.BigText
+        }        
         layoutProperties: StackLayoutProperties {
             spaceQuota: 7.0
         }    
@@ -30,5 +34,7 @@ Container {
         layoutProperties: StackLayoutProperties {
             spaceQuota: 2.0
         }
+        verticalAlignment: VerticalAlignment.Center
     }
+
 }
