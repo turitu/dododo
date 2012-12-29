@@ -14,7 +14,7 @@ NavigationPane {
                 title: "New Todo"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
-                    todoSheet.open()
+                    todosheet.open()
                 }
             },
             ActionItem {
@@ -33,7 +33,7 @@ NavigationPane {
         ScrollView {
             Container {
                 Container {
-                    topPadding: -1.0
+                    topPadding: 0.0
                     Divider {
                     }
                 }

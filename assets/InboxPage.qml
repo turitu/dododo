@@ -4,6 +4,21 @@ Page {
     titleBar: TitleBar {
         title: "Inbox"
     }
+    actions: [
+        ActionItem {
+            title: "New Todo"
+            ActionBar.placement: ActionBarPlacement.OnBar
+            onTriggered: {
+                todoSheet.open()
+            }
+        },
+        ActionItem {
+            title: "Another Action"
+        },
+        MultiSelectActionItem {
+            
+        }
+    ]
     Container {
         ListView {
             dataModel: XmlDataModel {
@@ -12,12 +27,24 @@ Page {
             listItemComponents: [
                 ListItemComponent {
                     type: "item"
-                    StandardListItem {
+                    /*StandardListItem {
                         title: ListItemData.name
                         status: ListItemData.due
+                    }*/
+                    TodoListItem {
+                        itemTitle: ListItemData.name
+                        due: ListItemData.due
                     }
                 }
             ]
         }
     }
+    attachedObjects: [
+        Sheet {
+            id: todoSheet
+            NewTodoPage {
+                onCancel: todoSheet.close()
+            }
+        }
+    ]
 }
