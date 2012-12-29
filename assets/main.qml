@@ -19,6 +19,10 @@ NavigationPane {
             ActionItem {
                 title: "Navigate"
                 ActionBar.placement: ActionBarPlacement.OnBar
+                onTriggered: {
+                    new inboxPage = inboxPageDefinition.createObject();
+                    
+                }
             },
             ActionItem {
                 title: "Another Action"
@@ -174,9 +178,13 @@ NavigationPane {
          */
     }
     attachedObjects: [
+        ComponentDefinition {
+            id: inboxPageDefinition
+            source: "InboxPage.qml"
+        },
         Sheet {
             id: todosheet
-            NewTodo{}
+            content: NewTodo{}
         }
     ]
 }
