@@ -13,21 +13,27 @@ Page {
             title: "Save"
         }
     }
-    Container {
-        Label {
-            text: "Name"
-        }
-        TextField {
-            hintText: "Name"
-
-        }
-        Label {
-            text: "Description"
-        }
-        TextArea {
-            hintText: "Description"
-            preferredHeight: 400
-            maxHeight: 400
+    ScrollView {
+        Container {
+            topPadding: 20.0
+            leftPadding: 30.0
+            rightPadding: 30.0
+            
+            Label {
+                text: "Name"
+            }
+            TextField {
+                hintText: "Name"
+            
+            }
+            Label {
+                text: "Description"
+            }
+            TextArea {
+                hintText: "Description"
+                preferredHeight: 400
+                maxHeight: 400
+            }
         }
     }
 }

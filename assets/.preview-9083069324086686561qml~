@@ -29,8 +29,7 @@ NavigationPane {
                 title: "Test"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
-                    //test();
-                    printJsonData();
+                    test();
                 }
             },
             ActionItem {
@@ -205,11 +204,6 @@ NavigationPane {
             }
         }
     ]
-
-    function printJsonData() {
-        console.log("Nu anropas printJsonData()");
-        console.log(_app.jsonData);
-    }
 
     function test() {
         console.log("Nu anropas test()");

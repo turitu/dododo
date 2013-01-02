@@ -22,26 +22,40 @@ static const uint qt_meta_data_ApplicationUI[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
-       0,    0, // properties
+       1,   14, // methods
+       1,   19, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      20,   15,   14,   14, 0x05,
+
+ // properties: name, type, flags
+      53,   45, 0x0a495103,
+
+ // properties: notify_signal_id
+       0,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ApplicationUI[] = {
-    "ApplicationUI\0"
+    "ApplicationUI\0\0data\0jsonDataChanged(QString)\0"
+    "QString\0jsonData\0"
 };
 
 void ApplicationUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
-    Q_UNUSED(_a);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        ApplicationUI *_t = static_cast<ApplicationUI *>(_o);
+        switch (_id) {
+        case 0: _t->jsonDataChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObjectExtraData ApplicationUI::staticMetaObjectExtraData = {
@@ -75,6 +89,45 @@ int ApplicationUI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
+#ifndef QT_NO_PROPERTIES
+      else if (_c == QMetaObject::ReadProperty) {
+        void *_v = _a[0];
+        switch (_id) {
+        case 0: *reinterpret_cast< QString*>(_v) = jsonData(); break;
+        }
+        _id -= 1;
+    } else if (_c == QMetaObject::WriteProperty) {
+        void *_v = _a[0];
+        switch (_id) {
+        case 0: setJsonData(*reinterpret_cast< QString*>(_v)); break;
+        }
+        _id -= 1;
+    } else if (_c == QMetaObject::ResetProperty) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyDesignable) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyScriptable) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyStored) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyEditable) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyUser) {
+        _id -= 1;
+    }
+#endif // QT_NO_PROPERTIES
     return _id;
+}
+
+// SIGNAL 0
+void ApplicationUI::jsonDataChanged(const QString & _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE

@@ -3,6 +3,7 @@
 #define ApplicationUI_HPP_
 
 #include <QObject>
+#include <QVariant>
 
 namespace bb { namespace cascades { class Application; }}
 
@@ -14,9 +15,26 @@ namespace bb { namespace cascades { class Application; }}
 class ApplicationUI : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString jsonData READ jsonData WRITE setJsonData NOTIFY jsonDataChanged)
+
 public:
     ApplicationUI(bb::cascades::Application *app);
     virtual ~ApplicationUI() {}
+
+    QString jsonData() const;
+    void setJsonData(const QString &data);
+
+
+
+Q_SIGNALS:
+    void jsonDataChanged(const QString& data);
+
+private:
+    void convertJsonToQt(void);
+    void setQtData(const QVariant& data);
+    void connectModelWithList(void);
+    QString mJsonData;
+    QVariant mQtData;
 };
 
 
