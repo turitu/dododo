@@ -8,7 +8,7 @@ NavigationPane {
         titleBar: TitleBar {
             title: "Lists"
         }
-        
+
         actions: [
             ActionItem {
                 title: "New Todo"
@@ -16,6 +16,14 @@ NavigationPane {
                 onTriggered: {
                     todoSheet.open()
                 }
+                shortcuts: [
+                    Shortcut {
+                        key: "N"
+                        onTriggered: {
+                            todoSheet.open()
+                        }
+                    }
+                ]
             },
             ActionItem {
                 title: "Navigate"

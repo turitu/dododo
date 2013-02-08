@@ -8,6 +8,7 @@
 #include <bb/cascades/GroupDataModel>
 #include <bb/data/JsonDataAccess>		//
 #include <QDebug>
+#include "MyModel.hpp"
 
 using namespace bb::cascades;			//
 using namespace bb::data;  // OBS!! Måste alltså ange namespace. Samt ange "LIBS += -lbbdata" i appens .pro fil
@@ -16,10 +17,14 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
 : QObject(app)
 {
 
+	qmlRegisterType<MyModel>("turitu.com", 1, 0, "MyModel");
+
 	// create scene document from main.qml asset
     // set parent to created document to ensure it exists for the whole application lifetime
-    //QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
-    QmlDocument *qml = QmlDocument::create("asset:///TestList.qml").parent(this);
+    QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
+
+	// Testkod när jag vill prova lite JSON grejor
+	// QmlDocument *qml = QmlDocument::create("asset:///TestList2.qml").parent(this);
 
 
     // Make the ApplicationUI object available to the UI as context property
@@ -31,6 +36,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
     // set created root object as a scene
     app->setScene(root);
 
+/* TODO: Avokommentera denna och fortsätt med json-kodande...
     QString assetPath = QDir::currentPath() + "/app/native/assets/models/inboxmodel.json";
     qDebug() << "dododo: pathen för json-filen: " << assetPath;
 
@@ -45,6 +51,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
     }
 
     convertJsonToQt();
+*/
 
     //connectModelWithList();
 
