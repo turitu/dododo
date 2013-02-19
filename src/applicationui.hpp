@@ -15,15 +15,16 @@ namespace bb { namespace cascades { class Application; }}
 class ApplicationUI : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString jsonData READ jsonData WRITE setJsonData NOTIFY jsonDataChanged)
+    //Q_PROPERTY(QString jsonData READ jsonData WRITE setJsonData NOTIFY jsonDataChanged)
 
 public:
     ApplicationUI(bb::cascades::Application *app);
     virtual ~ApplicationUI() {}
 
-    QString jsonData() const;
+    Q_INVOKABLE QString jsonData(void) const;
     void setJsonData(const QString &data);
-
+    Q_INVOKABLE QString testMethod(void) const;
+    Q_INVOKABLE QVariant qtData() const;
 
 
 Q_SIGNALS:

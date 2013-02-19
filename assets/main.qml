@@ -37,7 +37,7 @@ NavigationPane {
                 }
             },
             ActionItem {
-                title: "Test"
+                title: "Print"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
                     //test();
@@ -45,7 +45,10 @@ NavigationPane {
                 }
             },
             ActionItem {
-                title: "Another Action"
+                title: "test()"
+                onTriggered: {
+                    test();
+                }
             }
         ]
         
@@ -222,8 +225,15 @@ NavigationPane {
     ]
 
     function printJsonData() {
-        console.log("Nu anropas printJsonData()");
-        console.log(_app.jsonData);
+        console.log("function printJsonData()");
+        
+        console.log( _app.testMethod() );
+        
+        console.log( _app.jsonData() );
+        
+        console.log("Anropar _app.qtData()");
+        console.log(_app.qtData());
+        console.log( JSON.stringify( _app.qtData() ) );
     }
 
     function test() {
@@ -247,7 +257,11 @@ NavigationPane {
                 }
             ]
         };
-        var jsObject = JSON.parse("[1, 2, 3, 4, ]");
+        var jsObject = JSON.parse("[1, 2, 3, 4 ]");
+        console.log(jsObject);
+        console.log(JSON.stringify(jsObject));
+        console.log(myJSONObject);
+        console.log(JSON.stringify(myJSONObject));
     }
 }
 

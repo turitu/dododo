@@ -20,3 +20,5 @@ config.pri
 .DS_Store
 
 arm/Makefile
+
+arm/o.le-v7-g/.moc/moc_applicationui.cpp

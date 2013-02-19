@@ -7,7 +7,7 @@ Page {
     }
 
     onCreationCompleted: {
-        console.log("onCreationCompleted()");
+        console.log("TestList2: onCreationCompleted()");
     }
 
     Container {

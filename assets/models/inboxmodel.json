@@ -1,5 +1,5 @@
 [
-	{"id":1, "name": "Check gym hours", "due": "Oct 8", "rank":1},
+	{"id":1, "name": "From JSON file", "due": "Oct 8", "rank":1},
 	{"id":2, "name": "Check gym hours" , "rank":2},
 	{"id":3, "name": "Check gym hours", "due": "due", "rank":3},
 	{"id":4, "name": "Check gym hours", "due": "Dec 24", "rank":4},

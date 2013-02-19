@@ -16,7 +16,7 @@ using namespace bb::data;  // OBS!! Måste alltså ange namespace. Samt ange "LIBS
 ApplicationUI::ApplicationUI(bb::cascades::Application *app)
 : QObject(app)
 {
-
+	qDebug() << "ApplicationUI::ApplicationUI() ";
 	qmlRegisterType<MyModel>("turitu.com", 1, 0, "MyModel");
 
 	// create scene document from main.qml asset
@@ -24,11 +24,13 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
 
 	// Testkod när jag vill prova lite JSON grejor
-	// QmlDocument *qml = QmlDocument::create("asset:///TestList2.qml").parent(this);
+	//QmlDocument *qml = QmlDocument::create("asset:///TestList2.qml").parent(this);
 
 
     // Make the ApplicationUI object available to the UI as context property
     qml->setContextProperty("_app", this);
+    //qmlRegisterType<A>("test", 1, 0, "A");
+
 
     // create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();
@@ -36,7 +38,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
     // set created root object as a scene
     app->setScene(root);
 
-/* TODO: Avokommentera denna och fortsätt med json-kodande...
+///* TODO: Avkommentera denna och fortsätt med json-kodande...
     QString assetPath = QDir::currentPath() + "/app/native/assets/models/inboxmodel.json";
     qDebug() << "dododo: pathen för json-filen: " << assetPath;
 
@@ -51,7 +53,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
     }
 
     convertJsonToQt();
-*/
+//*/
 
     //connectModelWithList();
 
@@ -71,8 +73,10 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
 
 }
 
-QString ApplicationUI::jsonData() const
+QString ApplicationUI::jsonData(void) const
 {
+	qDebug() << "ApplicationUI::jsonData(void)";
+	qDebug() << "mJsonData: " << mJsonData;
     return mJsonData;
 }
 
@@ -85,6 +89,8 @@ void ApplicationUI::setJsonData(const QString &data)
 	emit jsonDataChanged(data);
 }
 
+
+// See http://developer.blackberry.com/cascades/reference/bb__data__jsondataaccess.html
 void ApplicationUI::convertJsonToQt(void)
 {
 	qDebug() << "ApplicationUI::convertJsonToQt(void)";
@@ -100,7 +106,7 @@ void ApplicationUI::convertJsonToQt(void)
         //setRhsTitleAndText(tr("Qt Data from JSON"), fmt.asString(qtData));
     	qDebug() << qtData;
 	}
-
+/*
 	{
 		// Iterera igenom "QtData" och skriv ut information om varje enskilt objekt.
         QVariantList todoList = qtData.value<QVariantList>();  // Jag vet att Top-noden _är_ en QVariantList.
@@ -115,7 +121,7 @@ void ApplicationUI::convertJsonToQt(void)
     	qDebug() << "dododo: " << pModel;
     	pModel->insertList(todoList);
 	}
-
+*/
 	/*
     const QString result = tr("Converting ... ");
     setResult(result);
@@ -139,7 +145,23 @@ void ApplicationUI::convertJsonToQt(void)
 
 void ApplicationUI::setQtData(const QVariant& data)
 {
-    mQtData = data;
+	qDebug() << "ApplicationUI::setQtData() ";
+	mQtData = data;
+}
+
+QVariant ApplicationUI::qtData() const
+{
+	qDebug() << "ApplicationUI::qtData(void)";
+	qDebug() << "mQtData: " << mQtData;
+    return mQtData;
+}
+
+QString ApplicationUI::testMethod(void) const
+{
+	qDebug() << "ApplicationUI::testMethod(void) ";
+	QString myString = "A test string";
+	QVariant myVariant = "A string in QVariant";
+	return myString;
 }
 
 void ApplicationUI::connectModelWithList(void)
