@@ -28,9 +28,12 @@ NavigationPane {
             ActionItem {
                 title: "Navigate"
                 ActionBar.placement: ActionBarPlacement.OnBar
-                onTriggered: {
+                /*onTriggered: {
                     var inboxPage = inboxPageDefinition.createObject();
                     np.push(inboxPage);
+                }*/
+                onTriggered: {
+                    np.push(testPageDefinition.createObject());
                 }
             },
             ActionItem {
@@ -205,6 +208,10 @@ NavigationPane {
         ComponentDefinition {
             id: todoInfoPageDefinition
             source: "TodoInfoPage.qml"
+        },
+        ComponentDefinition {
+            id: testPageDefinition
+            source: "TestPage.qml"
         },
         Sheet {
             id: todoSheet

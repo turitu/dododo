@@ -16,3 +16,7 @@ arm/o.le-v7-g/.obj/moc_applicationui.o
 arm/o.le-v7-g/dododo
 
 config.pri
+
+.DS_Store
+
+arm/Makefile
