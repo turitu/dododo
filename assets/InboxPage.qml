@@ -1,4 +1,5 @@
 import bb.cascades 1.0
+import turitu.com 1.0
 
 Page {
     titleBar: TitleBar {
@@ -21,9 +22,14 @@ Page {
     ]
     Container {
         ListView {
-            dataModel: XmlDataModel {
+            /*dataModel: XmlDataModel {
                 source: "models/inboxmodel.xml"
-            }
+            }*/
+            /*dataModel: GroupDataModel {
+                objectName: "listModelXX"
+            }*/
+            dataModel: inboxModel
+            //dataModel: cppModel
             listItemComponents: [
                 ListItemComponent {
                     type: "item"
@@ -46,6 +52,9 @@ Page {
         }
     }
     attachedObjects: [
+        MyModel {
+            id: cppModel
+        },
         Sheet {
             id: todoSheet
             NewTodoPage {

@@ -204,6 +204,10 @@ NavigationPane {
         }
     }
     attachedObjects: [
+        GroupDataModel {
+            id: inboxModel
+        	objectName: "listModel"  
+        },
         ComponentDefinition {
             id: inboxPageDefinition
             source: "InboxPage.qml"

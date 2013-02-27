@@ -9,6 +9,7 @@
 #include <bb/data/JsonDataAccess>		//
 #include <QDebug>
 #include "MyModel.hpp"
+#include "MyArrayModel.h"
 
 using namespace bb::cascades;			//
 using namespace bb::data;  // OBS!! Måste alltså ange namespace. Samt ange "LIBS += -lbbdata" i appens .pro fil
@@ -18,13 +19,14 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
 {
 	qDebug() << "ApplicationUI::ApplicationUI() ";
 	qmlRegisterType<MyModel>("turitu.com", 1, 0, "MyModel");
+	qmlRegisterType<MyArrayModel>("turitu.com", 1, 0, "MyArrayModel");
 
 	// create scene document from main.qml asset
     // set parent to created document to ensure it exists for the whole application lifetime
-    QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
+    //QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
 
 	// Testkod när jag vill prova lite JSON grejor
-	//QmlDocument *qml = QmlDocument::create("asset:///TestList2.qml").parent(this);
+	QmlDocument *qml = QmlDocument::create("asset:///TestList2.qml").parent(this);
 
 
     // Make the ApplicationUI object available to the UI as context property
@@ -38,7 +40,9 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
     // set created root object as a scene
     app->setScene(root);
 
-///* TODO: Avkommentera denna och fortsätt med json-kodande...
+//
+/* TODO: Avkommentera denna och fortsätt med json-kodande...
+
     QString assetPath = QDir::currentPath() + "/app/native/assets/models/inboxmodel.json";
     qDebug() << "dododo: pathen för json-filen: " << assetPath;
 
@@ -51,8 +55,8 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
         qDebug() << "dododo: Innehållet i filen ";
     	qDebug() << doc;
     }
-
     convertJsonToQt();
+*/
 //*/
 
     //connectModelWithList();
@@ -106,22 +110,25 @@ void ApplicationUI::convertJsonToQt(void)
         //setRhsTitleAndText(tr("Qt Data from JSON"), fmt.asString(qtData));
     	qDebug() << qtData;
 	}
-/*
+
 	{
 		// Iterera igenom "QtData" och skriv ut information om varje enskilt objekt.
         QVariantList todoList = qtData.value<QVariantList>();  // Jag vet att Top-noden _är_ en QVariantList.
         int nbrItems = todoList.size();
+        qDebug() << "Antal items i listan: " << nbrItems;
         QListIterator<QVariant> it(todoList);
         while (it.hasNext())
         	qDebug() << it.next();
 
         // ...och nu koppla ihop listmodellen med listan
+///*
     	AbstractPane *root = Application::instance()->scene();		// Är det verkligen vettigt att använda klass-anrop på det här sättet?
     	GroupDataModel *pModel = root->findChild<GroupDataModel*>("listModel");
     	qDebug() << "dododo: " << pModel;
     	pModel->insertList(todoList);
+//*/
 	}
-*/
+
 	/*
     const QString result = tr("Converting ... ");
     setResult(result);

@@ -12,8 +12,9 @@ Page {
 
     Container {
         ListView {
-            dataModel: MyModel {}
-            
+            //dataModel: MyModel {}
+            dataModel: MyArrayModel {
+            }
             /*
             listItemComponents: [
                 ListItemComponent {
